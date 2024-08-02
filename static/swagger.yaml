@@ -1,0 +1,636 @@
+openapi: 3.0.0
+info:
+  title: Library Management API
+  description: API documentation for the Library Management application
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /api/v1/authors:
+    post:
+      summary: Create a new Author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+      responses:
+        '200':
+          description: The created Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+  /api/v1/authors/{author_id}:
+    get:
+      summary: Get a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    put:
+      summary: Update a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+      responses:
+        '200':
+          description: The updated Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    delete:
+      summary: Delete a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v1/books:
+    post:
+      summary: Create a new Book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        '200':
+          description: The created Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+  /api/v1/books/{Book_id}:
+    get:
+      summary: Get a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      summary: Update a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        '200':
+          description: The updated Student
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    delete:
+      summary: Delete a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v1/borrowrecords:
+    post:
+      summary: Create a new Borrow_Record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrow_RecordInput'
+      responses:
+        '200':
+          description: The created Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+  /api/v1/borrowrecords/{Borrow_Record_id}:
+    get:
+      summary: Get a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+    put:
+      summary: Update a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrow_RecordInput'
+      responses:
+        '200':
+          description: The updated Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+    delete:
+      summary: Delete a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v1/users:
+    post:
+      summary: Register a new User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: The Registered User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/v1/users/login:
+    post:
+      summary: login a User & Create a new token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: The created token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/v1/borrowrecords/{user_id}:
+    get:
+      summary: Get a specific User by ID
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+   
+  /api/v2/authors:
+    post:
+      summary: Create a new Author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+      responses:
+        '200':
+          description: The created Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+  /api/v2/authors/{author_id}:
+    get:
+      summary: Get a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    put:
+      summary: Update a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+      responses:
+        '200':
+          description: The updated Author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    delete:
+      summary: Delete a specific Author by ID
+      parameters:
+        - name: author_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v2/books:
+    post:
+      summary: Create a new Book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        '200':
+          description: The created Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+  /api/v2/books/{Book_id}:
+    get:
+      summary: Get a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      summary: Update a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        '200':
+          description: The updated Student
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    delete:
+      summary: Delete a specific Book by ID
+      parameters:
+        - name: Book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v2/borrowrecords:
+    post:
+      summary: Create a new Borrow_Record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrow_RecordInput'
+      responses:
+        '200':
+          description: The created Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+  /api/v2/borrowrecords/{Borrow_Record_id}:
+    get:
+      summary: Get a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+    put:
+      summary: Update a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrow_RecordInput'
+      responses:
+        '200':
+          description: The updated Borrow_Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Borrow_Record'
+    delete:
+      summary: Delete a specific Borrow_Record by ID
+      parameters:
+        - name: Borrow_Record_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deletion result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+  /api/v2/users:
+    post:
+      summary: Register a new User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: The Registered User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/v2/users/login:
+    post:
+      summary: login a User & Create a new token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: The created token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/v2/borrowrecords/{user_id}:
+    get:
+      summary: Get a specific User by ID
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+   
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        bio:
+          type: text
+    AuthorInput:
+      type: object
+      properties:
+        name:
+          type: string
+        bio:
+          type: text
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author_id:
+          type: integer
+        published_date:
+          type: date
+        isbn:
+          type: String
+    BookInput:
+      type: object
+      properties:
+        title:
+          type: string
+        author_id:
+          type: integer
+        published_date:
+          type: date
+        isbn:
+          type: string
+    Borrow_Record:
+      type: object
+      properties:
+        id:
+          type: integer
+        book_id:
+          type: integer
+        borrower_name:
+          type: string
+        borrow_date:
+          type: date
+        return_date:
+          type: date
+    Borrow_RecordInput:
+      type: object
+      properties:
+        book_id:
+          type: integer
+        borrower_name:
+          type: string
+        borrow_date:
+          type: date
+        return_date:
+          type: date
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: integer
+        password:
+          type: string
+        role:
+          type: string
+        token:
+          type: string
+        last_request_time:
+          type: date
+        request_count:
+          type: integer
+    UserInput:
+      type: object
+      properties:
+        username:
+          type: integer
+        password:
+          type: string
+        role:
+          type: string
+        token:
+          type: string
+        last_request_time:
+          type: date
+        request_count:
+          type: integer
